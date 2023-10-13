@@ -5,11 +5,11 @@ import { Container } from "@mui/material";
 
 const TodoList = () => {
   return (
-    <Container maxWidth="md">
-        <TodoForm/>
-        <TodoItem/>
+    <Container maxWidth="sm">
+      <TodoForm />
+      <TodoItem />
     </Container>
-  )
+  );
 };
 
 export default TodoList;
