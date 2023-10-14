@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from "react";
+import { useState, ReactNode } from "react";
 import TodoContext from "./TodoContext";
 import { Todo } from "./TodoTypes";
 import useGenerateId from "../Hooks/useGenerateId";

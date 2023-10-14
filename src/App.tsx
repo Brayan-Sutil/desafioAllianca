@@ -1,4 +1,3 @@
-import React from 'react'
 import './App.css'
 import TodoList from './components/TodoList/TodoList'
 import { TodoProvider } from './Context/TodoProvider'

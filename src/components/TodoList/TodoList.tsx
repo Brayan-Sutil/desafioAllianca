@@ -1,4 +1,3 @@
-import React from "react";
 import TodoItem from "../TodoItem/TodoItem";
 import TodoForm from "../TodoForm/TodoForm";
 import { Container, Typography } from "@mui/material";
