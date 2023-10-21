@@ -18,16 +18,25 @@ interface TodoItemProps {
 }
 
 const TodoItem = ({ id, task, completed }: TodoItemProps) => {
-  const { toggleTodo, deleteTodo } = useTodos();
+  const { toggleTodo, deleteTodo, handleTypeAlert, handleTouch } = useTodos();
+
+  const deleteItem = () => {
+    handleTypeAlert("deleteSuccess");
+    deleteTodo(id);
+    handleTouch(true)
+  }
+
   return (
     <Paper elevation={3}>
-      <List sx={{ width: "100%", bgcolor: "background.paper", marginTop: "15px" }}>
+      <List
+        sx={{ width: "100%", bgcolor: "background.paper", marginTop: "15px" }}
+      >
         <ListItem
           secondaryAction={
             <IconButton
               edge="end"
               aria-label="comments"
-              onClick={() => deleteTodo(id)}
+              onClick={deleteItem}
             >
               <IconDelete fontSize="medium" />
             </IconButton>

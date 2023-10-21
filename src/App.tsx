@@ -1,11 +1,11 @@
 import './App.css'
-import TodoList from './components/TodoList/TodoList'
 import { TodoProvider } from './Context/TodoProvider'
+import Wapper from './components/Wapper/Wapper'
 
 function App() {
   return (
     <TodoProvider>
-       <TodoList/>
+      <Wapper/>
     </TodoProvider>
   )
 }
