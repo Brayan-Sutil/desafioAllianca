@@ -12,7 +12,7 @@ export function TodoProvider({ children }: TodoProviderProps) {
   const todosLength = savedTodos ? JSON.parse(savedTodos) : [];
   const [todos, setTodos] = useState<Todo[]>(todosLength);    
   const [ onAlert, setOnAlert ] = useState(false);
-  const [typeAlert, setTypeAlert] = useState< "error" | "info" | "success" | "warning" | undefined >();
+  const [typeAlert, setTypeAlert] = useState< string >("");
   const generateId = useGenerateId();
   localStorage.setItem("ListItem", JSON.stringify(todos));
 
@@ -37,7 +37,7 @@ export function TodoProvider({ children }: TodoProviderProps) {
     setOnAlert(state);
   }
 
-  const handleTypeAlert = ( type: "error" | "info" | "success" | "warning" | undefined ) => {
+  const handleTypeAlert = ( type: string) => {
     setTypeAlert(type);
   };
 
