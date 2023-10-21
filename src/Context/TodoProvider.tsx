@@ -11,6 +11,8 @@ export function TodoProvider({ children }: TodoProviderProps) {
   const savedTodos = localStorage.getItem("ListItem");
   const todosLength = savedTodos ? JSON.parse(savedTodos) : [];
   const [todos, setTodos] = useState<Todo[]>(todosLength);    
+  const [ onAlert, setOnAlert ] = useState(false);
+  const [typeAlert, setTypeAlert] = useState< "error" | "info" | "success" | "warning" | undefined >();
   const generateId = useGenerateId();
   localStorage.setItem("ListItem", JSON.stringify(todos));
 
@@ -31,14 +33,27 @@ export function TodoProvider({ children }: TodoProviderProps) {
     setTodos(updatedTodosDeleteTodo);
   };
 
+  const handleTouch = (state: boolean) => {
+    setOnAlert(state);
+  }
+
+  const handleTypeAlert = ( type: "error" | "info" | "success" | "warning" | undefined ) => {
+    setTypeAlert(type);
+  };
+
   return (
-    <TodoContext.Provider 
-    value={{ 
-      todos, 
-      addTodo, 
-      toggleTodo, 
-      deleteTodo 
-    }}>
+    <TodoContext.Provider
+      value={{
+        todos,
+        onAlert,
+        typeAlert,
+        handleTypeAlert,
+        addTodo,
+        toggleTodo,
+        deleteTodo,
+        handleTouch,
+      }}
+    >
       {children}
     </TodoContext.Provider>
   );

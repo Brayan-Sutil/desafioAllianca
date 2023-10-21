@@ -6,13 +6,15 @@ import { useTodos } from "../../Context/TodoContext";
 
 const TodoForm = () => {
    const inputRef = useRef<HTMLInputElement>(null); 
-   const { addTodo } = useTodos();
+   const { addTodo, handleTouch, handleTypeAlert } = useTodos();
 
    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
      e.preventDefault();
      const currentTask = inputRef.current?.value || ""; 
      if (currentTask.trim()) {
         addTodo(currentTask);
+        handleTouch(true);
+        handleTypeAlert("success");
         if (inputRef.current) {
           inputRef.current.value = ""
         } 
@@ -27,7 +29,7 @@ const TodoForm = () => {
               label="Add task"
               variant="outlined"
               fullWidth
-              inputRef={inputRef} 
+              inputRef={inputRef}
             />
             <Button variant="contained" type="submit">
               Add
